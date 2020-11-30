@@ -9,4 +9,8 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'products';
+
+    public static function getProducts(){
+        return self::all();
+    }
 }
