@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./resources/sass/product/E:/Programs/OpenServer/OSPanel/domains/storeclothing/resources/sass/product/index.scss"],"names":[],"mappings":"AAAA,KACI,wBACJ","file":"/css/product/index.css","sourcesContent":["body{\n    background-color: chartreuse;\n}\n"],"sourceRoot":""}
