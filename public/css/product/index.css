@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+    background-color: #f6f6f8;
 }
 
 * {
@@ -13,3 +14,24 @@ header {
   margin-top: 10px;
 }
 
+#carusel{
+    margin-top: 20px;
+}
+
+
+.carousel-item img{
+    height: 500px;
+}
+
+.famous_brands{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.famous_brands img{
+    height: 150px;
+}
+
+footer{
+
+}

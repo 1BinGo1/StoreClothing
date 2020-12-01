@@ -9,6 +9,7 @@
     <title>{{$title ?? 'Страница сайта'}}</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/product/index.css')}}">
+    <link rel="stylesheet" href="{{asset('css/product/products.css')}}">
 </head>
 <body>
 
