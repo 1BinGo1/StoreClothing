@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.show .card-body-img{
+    text-align: center;
+}
+
+.show .card-body-text{
+    float: bottom;
+}
+
+.show .card-header-category{
+    display: flex;
+    align-items: center;
+}
+
+.show .card-header-category img{
+    height: 50px;
+}
+
+

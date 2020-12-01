@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/product/index.css')}}">
     <link rel="stylesheet" href="{{asset('css/product/products.css')}}">
+    <link rel="stylesheet" href="{{asset('css/product/show.css')}}">
 </head>
 <body>
 
@@ -21,6 +22,3 @@
 
 @include('layouts.footer')
 
-<?php
-
-?>

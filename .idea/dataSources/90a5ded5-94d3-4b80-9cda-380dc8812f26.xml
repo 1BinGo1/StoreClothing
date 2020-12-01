@@ -1087,7 +1087,7 @@ ALL PRIVILEGES|admin\_%:null
     </column>
     <column id="350" parent="340" name="img">
       <Position>3</Position>
-      <DataType>text|0s</DataType>
+      <DataType>blob|0s</DataType>
     </column>
     <column id="351" parent="340" name="created_at">
       <Position>4</Position>

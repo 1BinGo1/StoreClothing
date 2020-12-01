@@ -13,3 +13,28 @@ body {
 .main{
     margin-top: 20px;
 }
+
+.products .product .card-body-img{
+    text-align: center;
+}
+
+.products .product .card-body-img img{
+    height: 200px;
+}
+
+.products .product .card-body-excerpt{
+    float: bottom;
+}
+
+.products .product .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px;
+}
+
+.products .product .card-header-category img{
+    height: 50px;
+}
+
+
