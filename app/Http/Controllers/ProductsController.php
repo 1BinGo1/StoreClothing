@@ -28,7 +28,7 @@ class ProductsController extends Controller
         if ($request->isMethod('get')){
             $categories = Category::all();
             $brands = Brand::all();
-            return view('admin.index', compact('categories', 'brands'));
+            return view('admin.create', compact('categories', 'brands'));
         }
         else{
             $product = new Product();
@@ -46,7 +46,8 @@ class ProductsController extends Controller
             $image = $request->file('image');
             $product->img = $image;
             if ($image) {
-                Storage::putFile('public/products', $image);
+                $path = Storage::putFile('public/products', $image);
+                $product->img = Storage::url($path);
             }
             $product->created_at = date('Y-m-d H:i:s');
             $product->save();
@@ -62,7 +63,41 @@ class ProductsController extends Controller
             return view('admin.edit', compact('product', 'categories', 'brands'));
         }
         else{
+            $product = Product::query()->findOrFail($id);
+            $product->user_id = 1;
+            $product->category_id = (int)$request->input('category');
+            $product->brand_id = (int)$request->input('brand');
+            $product->title = $request->input('title');
+            $product->excerpt = $request->input('excerpt');
+            $product->price = $request->input('price');
+            $product->text = $request->input('body');
+            if ($request->input('remove')){
+                if ($product->img){
+                    if (file_exists(public_path($product->img))){
+                        unlink(public_path($product->img));
+                    }
+                }
+                $product->img = null;
+            }
+            $image = $request->file('image');
+            if ($image) {
+                $path = Storage::putFile('public/products', $image);
+                $product->img = Storage::url($path);
+            }
+            $product->updated_at = date('Y-m-d H:i:s');
+            $product->update();
+            return redirect()
+                ->route('products.index')
+                ->with('success', 'Пост успешно отредактирован');
+        }
+    }
 
+    public function test(Request $request){
+        if ($request->isMethod('get')){
+            return view('product.test');
+        }
+        else{
+            return redirect()->route('products.test')->with('data', $request->input('name'));
         }
     }
 

@@ -10,7 +10,7 @@
                         <a class="nav-link" href="{{route('products.home')}}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="{{route('products.create')}}"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('products.index')}}">Каталог</a>

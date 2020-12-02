@@ -3,7 +3,7 @@
 @section('main')
     <div class="container">
 
-        <form action="{{route('admin.index')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('products.create')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
                 <label class="mr-sm-2" for="category">Category</label>
