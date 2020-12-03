@@ -28,5 +28,5 @@
         @yield('main')
     </div>
     @include('layouts.footer')
-</div>
+
 

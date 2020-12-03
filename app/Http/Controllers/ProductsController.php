@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -43,8 +42,9 @@ class ProductsController extends Controller
     }
 
     public function index(){
+        //$products = Product::query()->orderBy('created_at', 'desc')->paginate(2);
         $products = Product::getProducts();
-        return view('product.index', compact('products'));
+        return view('product.index', ['products' => $products]);
     }
 
     public function show($id){
@@ -79,7 +79,7 @@ class ProductsController extends Controller
         }
         $product->created_at = date('Y-m-d H:i:s');
         $product->save();
-        $request->session()->flash('success', 'Новая запись добавлена!');
+        $request->session()->flash('success', 'Новая запись успешно добавлена!');
     }
 
     public function create(){
@@ -122,13 +122,38 @@ class ProductsController extends Controller
         $request->session()->flash('success', 'Запись успешно обновлена!');
     }
 
-    public function test(Request $request){
-        if ($request->isMethod('get')){
-            return view('product.test');
+    public function destroy($id){
+        $product = Product::query()->findOrFail($id);
+        if ($product->img){
+            if (file_exists(public_path($product->img))){
+                unlink(public_path($product->img));
+            }
         }
-        else{
-            return redirect()->route('products.test')->with('data', $request->input('name'));
+        $product->delete();
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Запись была успешно удалена!');
+    }
+
+    public function search(Request $request){
+        $search = $request->input('search', '');
+        $search = iconv_substr($search, 0, 64);
+        $search = preg_replace('#[^0-9a-zA-ZА-Яа-яёЁ]#u', ' ', $search);
+        $search = preg_replace('#\s+#u', ' ', $search);
+        if (empty($search)) {
+            return view('product.search');
         }
+        $products = Product::query()->select('products.*', 'users.name as author')
+            ->join('users', 'products.user_id', '=', 'users.id')
+            ->where('products.title', 'like', '%'.$search.'%')
+            ->orWhere('products.text', 'like', '%'.$search.'%')
+            ->orWhere('products.excerpt', 'like', '%'.$search.'%')
+            ->orWhere('products.price', 'like', '%'.$search.'%')
+            ->orWhere('users.name', 'like', '%'.$search.'%')
+            ->orderBy('products.created_at', 'desc')
+            ->paginate(4)
+            ->appends(['search' => $request->input('search')]);
+        return view('product.search', compact('products'));
     }
 
 }

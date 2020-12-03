@@ -1,4 +1,3 @@
-
 let form_title = document.getElementById('title');
 let form_excerpt = document.getElementById('excerpt');
 let form_price = document.getElementById('price');
@@ -46,7 +45,7 @@ function executeCreate(data, action){
     ).then(
         text => {
             if (isEmptyObject(text)){
-                if (action == 'store'){
+                if (action == 'create'){
                     fetch('/products/store', {
                         method: 'POST',
                         body: data,

@@ -27,4 +27,10 @@ body {
     height: 50px;
 }
 
+.show .card-body-settings{
+    display: flex;
+}
 
+.show .card-body-settings .card-body-edit{
+    margin-right: 10px;
+}

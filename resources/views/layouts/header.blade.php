@@ -24,9 +24,9 @@
                     <a class="nav-link" href="#">Корзина</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Поиск..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск...</button>
+            <form class="form-inline my-2 my-lg-0" action="{{ route('products.search') }}">
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Поиск..." aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="send_search">Поиск...</button>
             </form>
         </div>
     </nav>
