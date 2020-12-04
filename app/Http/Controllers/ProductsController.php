@@ -64,7 +64,7 @@ class ProductsController extends Controller
 
     public function store(Request $request){
         $product = new Product();
-        $product->user_id = 1;
+        $product->user_id = 2;
         $product->category_id = (int)$request->input('category');
         $product->brand_id = (int)$request->input('brand');
         $product->title = $request->input('title');
@@ -97,7 +97,7 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id){
         $product = Product::query()->findOrFail($id);
-        $product->user_id = 1;
+        $product->user_id = 2;
         $product->category_id = (int)$request->input('category');
         $product->brand_id = (int)$request->input('brand');
         $product->title = $request->input('title');

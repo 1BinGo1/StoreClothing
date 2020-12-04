@@ -22,19 +22,23 @@
                     <div class="card-body-price">
                         <p>Цена: {{ number_format($product->price, 2, '.', '') }}</p>
                     </div>
-                    <div class="card-body-settings float-left">
-                        <div class="card-body-edit">
-                            <a href="{{route('products.edit', ['id' => $product->id])}}" class="btn btn-dark">Редактировать</a>
-                        </div>
-                        <div class="card-body-delete">
-                            <form action="{{ route('products.destroy', ['id' => $product->id]) }}"
-                                  method="post" onsubmit="return confirm('Удалить этот пост?')" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" class="btn btn-danger" value="Удалить">
-                            </form>
-                        </div>
-                    </div>
+                    @auth
+                        @if(auth()->id() == $product->user_id || Auth::id() == 2)
+                            <div class="card-body-settings float-left">
+                                <div class="card-body-edit">
+                                    <a href="{{route('products.edit', ['id' => $product->id])}}" class="btn btn-dark">Редактировать</a>
+                                </div>
+                                <div class="card-body-delete">
+                                    <form action="{{ route('products.destroy', ['id' => $product->id]) }}"
+                                          method="post" onsubmit="return confirm('Удалить этот пост?')" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger" value="Удалить">
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    @endauth
                 </div>
 
             </div>

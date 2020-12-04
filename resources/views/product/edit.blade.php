@@ -7,7 +7,8 @@
             <label class="mr-sm-2" for="category">Category</label>
             <select class="form-control form-control-lg" name="category" id="category">
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}" @if(!empty(old('$category'))) @if(old('$category') == $category->id) selected @endif @endif>{{$category->title}}</option>
+                    <option value="{{$category->id}}" @if(!empty(old('category'))) @if(old('category') == $category->id) selected @endif
+                        @elseif ($category->id == $product->category_id) selected  @endif>{{$category->title}}</option>
                 @endforeach
             </select>
         </div>
@@ -15,7 +16,8 @@
             <label class="mr-sm-2" for="brand">Brand</label>
             <select class="form-control form-control-lg" name="brand" id="brand">
                 @foreach($brands as $brand)
-                    <option value="{{$brand->id}}" @if(!empty(old('brand'))) @if(old('brand') == $brand->id) selected @endif @endif>{{$brand->title}}</option>
+                    <option value="{{$brand->id}}" @if(!empty(old('brand'))) @if(old('brand') == $brand->id) selected @endif
+                        @elseif ($brand->id == $product->brand_id) selected @endif>{{$brand->title}}</option>
                 @endforeach
             </select>
         </div>
