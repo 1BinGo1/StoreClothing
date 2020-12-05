@@ -14,7 +14,7 @@ class Administrator
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next)
     {
         if (!auth()->user()->admin) {
             abort(404);

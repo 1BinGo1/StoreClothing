@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('breadcrumbs')
+
+@endsection
+
 @section('main')
     <form action="" method="post" enctype="multipart/form-data" novalidate id="form-create">
         {{csrf_field()}}

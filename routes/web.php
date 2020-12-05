@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -23,10 +24,10 @@ Auth::routes();
 Route::get('/', [ProductsController::class, 'home'])->name('products.home');
 Route::match(['get', 'post'],'/test', [ProductsController::class, 'test'])->name('products.test');
 
-Route::get('/products/{title}', [ProductsController::class, 'index'])->name('products.index');
+Route::get('/products/section/{title}', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create')->middleware(['auth', 'admin']);
 Route::post('/products/store', [ProductsController::class, 'store'])->name('products.store')->middleware(['auth', 'admin']);
-Route::post('/products/check_validate', [ProductsController::class, 'validateProduct'])->name('products.validation');
+Route::post('/products/check_validate', [ProductsController::class, 'validateProduct'])->name('products.validation')->middleware(['auth', 'admin']);
 Route::get('/products/show/{id}', [ProductsController::class, 'show'])->name('products.show');
 Route::get('/products/edit/{id}', [ProductsController::class, 'edit'])->name('products.edit')->middleware(['auth', 'admin']);
 Route::post('/products/update/{id}', [ProductsController::class, 'update'])->name('products.update')->middleware(['auth', 'admin']);
@@ -40,4 +41,7 @@ Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
 Route::post('/basket/add/{id}', [BasketController::class, 'add'])->name('basket.add');
 Route::post('/basket/plus/{id}', [BasketController::class, 'plus'])->name('basket.plus');
 Route::post('/basket/minus/{id}', [BasketController::class, 'minus'])->name('basket.minus');
-Route::post('/basket/clear/{id}', [BasketController::class, 'clear'])->name('basket.clear');
+Route::post('/basket/clear/{id}', [BasketController::class, 'clear'])->name('basket.clear')->middleware(['admin']);
+
+Route::get('/delivery', [ContactController::class, 'delivery'])->name('contact.delivery.index');
+Route::get('/about',[ContactController::class, 'about'])->name('contact.about.index');

@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('breadcrumbs')
+
+@endsection
+
 @section('main')
     <form action="" method="post" enctype="multipart/form-data" novalidate class="form-edit" id="form_edit-{{$product->id}}">
         {{csrf_field()}}

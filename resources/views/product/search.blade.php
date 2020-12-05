@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('breadcrumbs')
+
+@endsection
+
 @section('main')
     <h1 class="mt-2 mb-3">Результаты поиска</h1>
     <div class="products">

@@ -22,7 +22,7 @@ class BasketController extends Controller
 
     public function add(Request $request, $id){
         $basket = Basket::query()->where('user_id', auth()->id())->first();
-        $quantity = (int)$request->input('quantity');
+        $quantity = (int)($request->input('quantity') ?? 1);
         if (empty($basket)){
             $basket = new Basket();
             $basket->user_id = auth()->id();

@@ -64,7 +64,7 @@ function executeCreate(data, action){
                     }
                 ).then(
                     text =>{
-                        window.location.href = '/products';
+                        window.location.href = '/';
                     }
                 )
             }

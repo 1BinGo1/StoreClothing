@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('breadcrumbs')
+
+@endsection
+
 @section('main')
     <h1>Личный кабинет</h1>
     <p>Добро пожаловать, {{ auth()->user()->name }}</p>

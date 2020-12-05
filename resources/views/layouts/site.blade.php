@@ -17,6 +17,7 @@
 
 <div class="container">
     @include('layouts.header')
+    @yield('breadcrumbs')
     <div class="main">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible mt-4" role="alert">

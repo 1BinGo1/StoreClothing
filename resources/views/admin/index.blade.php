@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('breadcrumbs')
+    {{ DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render('admin') }}
+@endsection
+
 @section('main')
     <div class="container">
 

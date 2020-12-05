@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -42,9 +43,10 @@ class ProductsController extends Controller
     }
 
     public function index($title){
-        $title = __($title);
-        $category = Category::query()->where('title', $title)->firstOrFail();
-        return view('product.index', compact('category'));
+        $title = __('messages.' . $title);
+        $section = Section::query()->where('name', $title)->firstOrFail();
+        $categories = $section->categories;
+        return view('product.index', compact('categories'));
     }
 
     public function show($id){
@@ -64,7 +66,7 @@ class ProductsController extends Controller
 
     public function store(Request $request){
         $product = new Product();
-        $product->user_id = 2;
+        $product->user_id = auth()->id();
         $product->category_id = (int)$request->input('category');
         $product->brand_id = (int)$request->input('brand');
         $product->title = $request->input('title');
@@ -97,7 +99,7 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id){
         $product = Product::query()->findOrFail($id);
-        $product->user_id = 2;
+        $product->user_id = auth()->id();
         $product->category_id = (int)$request->input('category');
         $product->brand_id = (int)$request->input('brand');
         $product->title = $request->input('title');

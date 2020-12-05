@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('main')
-    <h1>Ваша корзина</h1>
+    <h1>Корзина</h1>
     @if (count($basket->products))
         @php
             $basketCost = 0;

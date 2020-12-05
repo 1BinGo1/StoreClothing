@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('breadcrumbs')
+
+@endsection
+
 @section('main')
     <div class="row show">
         <div class="col-12">

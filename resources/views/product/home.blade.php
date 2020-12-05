@@ -32,8 +32,11 @@
     </div>
 
     <div class="famous_brands">
-        <img src="{{ asset('storage/brands/Adidas.png') }}" alt="Image">
-        <img src="{{ asset('storage/brands/Nike.png')}}" alt="Image">
-        <img src="{{ asset('storage/brands/Puma.png') }}" alt="Image">
+        @php
+            $brands = \App\Models\Brand::all();
+        @endphp
+        @foreach($brands as $brand)
+            <img src="{{ asset($brand->img) }}" alt="Image">
+        @endforeach
     </div>
 @endsection

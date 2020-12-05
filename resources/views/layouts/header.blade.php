@@ -21,9 +21,12 @@
                         Каталог
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownCatalog">
-                        <a class="dropdown-item" href="{{route('products.index', ['title' => 'clothes'])}}">Одежда</a>
-                        <a class="dropdown-item" href="{{route('products.index', ['title' => 'sneakers'])}}">Обувь</a>
-                        <a class="dropdown-item" href="{{route('products.index', ['title' => 'accessories'])}}">Аксессуары</a>
+                        @php
+                            $sections =\App\Models\Section::all();
+                        @endphp
+                        @foreach($sections as $section)
+                            <a class="dropdown-item" href="{{route('products.index', ['title' => __('messages.' . $section->name)])}}">{{$section->name}}</a>
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item">
