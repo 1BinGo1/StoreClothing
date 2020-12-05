@@ -10,10 +10,6 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
 
-    public static function getProducts(){
-        return self::all();
-    }
-
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -24,6 +20,10 @@ class Product extends Model
 
     public function brand(){
         return $this->belongsTo(Brand::class);
+    }
+
+    public function baskets() {
+        return $this->belongsToMany(Basket::class, 'basket_product');
     }
 
 }

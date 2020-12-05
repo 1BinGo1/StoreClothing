@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body-img">
-                                        <img src="{{ $product->img ?? asset('storage/products/Default.png') }}" alt="Image" class="img-fluid">
+                                        <img src="{{ $product->img ?? asset('storage/app/Default.png') }}" alt="Image" class="img-fluid">
                                     </div>
                                     <div class="card-body-excerpt">
                                         <p class="mt-3 mb-0">{{ $product->excerpt ?? 'Краткое описание' }}</p>

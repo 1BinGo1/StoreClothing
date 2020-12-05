@@ -45,41 +45,28 @@ function executeCreate(data, action){
     ).then(
         text => {
             if (isEmptyObject(text)){
-                if (action == 'create'){
-                    fetch('/products/store', {
-                        method: 'POST',
-                        body: data,
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                    }).then(
-                        response => {
-                            return response.text();
-                        }
-                    ).then(
-                        text =>{
-                            window.location.href = '/products';
-                        }
-                    )
+                let path = '';
+                if (action == "create"){
+                    path = '/products/store';
                 }
-                else if (action == 'edit'){
-                    let id = form_edit.getAttribute('id').split('-')[1];
-                    fetch('/products/update/' + id, {
-                        method: 'POST',
-                        body: data,
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                    }).then(
-                        response => {
-                            return response.text();
-                        }
-                    ).then(
-                        text =>{
-                            window.location.href = '/products';
-                        }
-                    )
+                else if (action == "edit"){
+                    path = '/products/update/' + form_edit.getAttribute('id').split('-')[1];
                 }
+                fetch(path, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                }).then(
+                    response => {
+                        return response.text();
+                    }
+                ).then(
+                    text =>{
+                        window.location.href = '/products';
+                    }
+                )
             }
             else{
                 let errors = document.querySelectorAll('.alert-danger');

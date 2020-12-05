@@ -13,15 +13,25 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body-img">
-                        <img src="{{ $product->img ?? asset('storage/products/Default.png') }}" alt="Image" class="img-fluid">
+                        <img src="{{ $product->img ?? asset('storage/app/Default.png') }}" alt="Image" class="img-fluid">
                     </div>
                     <div class="card-body-text">
                         <p class="mt-3 mb-0">{{ $product->text }}</p>
                     </div>
                     <br>
                     <div class="card-body-price">
-                        <p>Цена: {{ number_format($product->price, 2, '.', '') }}</p>
+                        <p>Цена: {{ number_format($product->price, 2, '.', '') }} руб.</p>
                     </div>
+                    <div class="card-body-add">
+                        <form action="{{ route('basket.add', ['id' => $product->id]) }}" method="post" class="form-inline">
+                            @csrf
+                            <label for="input-quantity">Количество</label>
+                            <input type="text" name="quantity" id="input-quantity" value="1"
+                                   class="form-control mx-2 w-25">
+                            <button type="submit" class="btn btn-success">Добавить в корзину</button>
+                        </form>
+                    </div>
+                    <br>
                     @auth
                         @if(auth()->id() == $product->user_id || Auth::id() == 2)
                             <div class="card-body-settings float-left">

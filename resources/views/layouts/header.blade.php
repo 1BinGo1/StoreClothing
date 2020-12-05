@@ -15,8 +15,16 @@
                         </li>
                     @endif
                 @endauth
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('products.index')}}">Каталог</a>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdownCatalog" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" v-pre>
+                        Каталог
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownCatalog">
+                        <a class="dropdown-item" href="{{route('products.index', ['title' => 'clothes'])}}">Одежда</a>
+                        <a class="dropdown-item" href="{{route('products.index', ['title' => 'sneakers'])}}">Обувь</a>
+                        <a class="dropdown-item" href="{{route('products.index', ['title' => 'accessories'])}}">Аксессуары</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Доставка</a>
@@ -24,9 +32,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Корзина</a>
-                </li>
+                @auth
+                    @if(auth()->id())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('basket.index')}}">Корзина</a>
+                        </li>
+                    @endif
+                @endauth
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{ route('products.search') }}">
                 <input class="form-control mr-sm-2" name="search" type="search" placeholder="Поиск..." aria-label="Search">

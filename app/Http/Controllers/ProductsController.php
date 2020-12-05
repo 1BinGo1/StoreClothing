@@ -41,10 +41,10 @@ class ProductsController extends Controller
         return view('product.home');
     }
 
-    public function index(){
-        //$products = Product::query()->orderBy('created_at', 'desc')->paginate(2);
-        $products = Product::getProducts();
-        return view('product.index', ['products' => $products]);
+    public function index($title){
+        $title = __($title);
+        $category = Category::query()->where('title', $title)->firstOrFail();
+        return view('product.index', compact('category'));
     }
 
     public function show($id){
