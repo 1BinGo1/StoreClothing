@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/product/products.css')}}">
     <link rel="stylesheet" href="{{asset('css/product/show.css')}}">
     <link rel="stylesheet" href="{{asset('css/404.css')}}">
+    @stack('styles')
 </head>
 <body>
 

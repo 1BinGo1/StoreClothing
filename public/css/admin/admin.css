@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-item span:hover{
+    cursor: pointer;
+}
+
+.nav-item span{
+    color: #3490dc;
+}
+
+.content{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+#brands img{
+    height: 50px;
+    width: 50px;
+}

@@ -11,7 +11,7 @@
                 @auth
                     @if(auth()->user()->admin)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('products.create')}}"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="{{route('admin.index')}}"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
                         </li>
                     @endif
                 @endauth
@@ -45,7 +45,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{ route('products.search') }}">
                 <input class="form-control mr-sm-2" name="search" type="search" placeholder="Поиск..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="send_search">Поиск...</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="send_search">Поиск...</button>
             </form>
             <ul class="navbar-nav ml-auto">
                 @guest

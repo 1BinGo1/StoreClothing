@@ -13,7 +13,7 @@ Breadcrumbs::for('section', function ($trail) {
 
 Breadcrumbs::for('admin', function ($trail) {
     $trail->parent('home');
-    $trail->push('Администрирование', route('admin.index'));
+    $trail->push('Панель управления', route('admin.index'));
 });
 
 Breadcrumbs::for('admin.create', function ($trail) {

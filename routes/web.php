@@ -25,6 +25,7 @@ Route::get('/', [ProductsController::class, 'home'])->name('products.home');
 Route::match(['get', 'post'],'/test', [ProductsController::class, 'test'])->name('products.test');
 
 Route::get('/products/section/{title}', [ProductsController::class, 'index'])->name('products.index');
+
 Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create')->middleware(['auth', 'admin']);
 Route::post('/products/store', [ProductsController::class, 'store'])->name('products.store')->middleware(['auth', 'admin']);
 Route::post('/products/check_validate', [ProductsController::class, 'validateProduct'])->name('products.validation')->middleware(['auth', 'admin']);
