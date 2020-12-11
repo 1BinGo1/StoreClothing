@@ -46,3 +46,10 @@ Route::post('/basket/clear/{id}', [BasketController::class, 'clear'])->name('bas
 
 Route::get('/delivery', [ContactController::class, 'delivery'])->name('contact.delivery.index');
 Route::get('/about',[ContactController::class, 'about'])->name('contact.about.index');
+
+Route::post('/admin/create-user', [AdminController::class,'create_user'])->name('admin.create-user');
+Route::post('/admin/create-product', [AdminController::class,'create_product'])->name('admin.create-product');
+Route::post('/admin/create-section', [AdminController::class,'create_section'])->name('admin.create-section');
+Route::post('/admin/create-category', [AdminController::class,'create_category'])->name('admin.create-category');
+Route::post('/admin/create-brand', [AdminController::class,'create_brand'])->name('admin.create-brand');
+Route::delete('/admin/destroy/{name}/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
