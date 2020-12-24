@@ -216,21 +216,17 @@
                                 <td>{{$brand->title}}</td>
                                 <td><img src="{{$brand->img}}" alt="Image"></td>
                                 <td>
-                                    <form action="{{ route('admin.destroy', ['name' => 'brand', 'id' => $brand->id]) }}"
-                                          method="post" onsubmit="return confirm('Удалить данный бренд?')" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="m-0 p-0 border-0 bg-transparent">
-                                            <i class="fa fa-trash fa-2x text-danger"></i>
-                                        </button>
-                                    </form>
-                                    <span class="mx-0"></span>
-                                    <form action="" method="post" class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="m-0 p-0 border-0 bg-transparent">
-                                            <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                        </button>
-                                    </form>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#modal-edit-brand">Редактировать</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <form action="{{ route('admin.destroy', ['name' => 'brand', 'id' => $brand->id]) }}"
+                                              method="post" onsubmit="return confirm('Удалить данный бренд?')" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-block">Удалить</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

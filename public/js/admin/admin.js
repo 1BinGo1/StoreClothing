@@ -157,4 +157,23 @@ function changeOption(){
 
 }
 
+let modals = document.querySelectorAll('.modal-dialog');
+for (let i = 0; i < modals.length; i++){
+    modals[i].addEventListener('change', changeModal);
+}
+
+function changeModal(){
+    let modals = document.querySelectorAll('.modal-dialog');
+    for (let i = 0; i < modals.length; i++){
+        if (window.getComputedStyle(modals[i]).display === "none"){
+            let alerts = modals[i].querySelector('.alert');
+            for (let j = 0; j < alerts.length; j++){
+                alerts[j].remove();
+            }
+        }
+    }
+}
+
+
+
 
