@@ -26,7 +26,7 @@ class SectionRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'bail|required|unique:sections,name|min:3|max:255',
         ];
     }
 
@@ -38,7 +38,7 @@ class SectionRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+            'name' => 'Name',
         ];
     }
 
@@ -50,7 +50,10 @@ class SectionRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'required' => 'Поле «:attribute» обязательно для заполнения',
+            'min' => 'Поле «:attribute» должно быть не меньше :min символов',
+            'max' => 'Поле «:attribute» должно быть не больше :max символов',
+            'unique' => 'Поле «:attribute» должно быть уникальным',
         ];
     }
 }

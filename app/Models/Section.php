@@ -10,6 +10,7 @@ class Section extends Model
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
     protected $table = 'sections';
+    protected $guarded = ['id'];
 
     public function categories(){
         return $this->hasMany(Category::class);

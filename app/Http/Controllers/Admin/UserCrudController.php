@@ -58,6 +58,12 @@ class UserCrudController extends CrudController
             'label' => 'Created',
         ]);
 
+        $this->crud->addColumn([
+            'name' => 'updated_at',
+            'type' => 'datetime',
+            'label' => 'Updated',
+        ]);
+
         $this->crud->addFilter([
             'name'  => 'created_at',
             'type'  => 'date_range',
