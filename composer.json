@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.3|^8.0",
         "backpack/crud": "4.1.*",
-        "coreui/coreui": "3.2.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^v2.5.0",
         "fideloper/proxy": "^4.4",

@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '82e7898276ff1fec2a1682a38d1f27df8c915f02',
+    'reference' => '274e2eb3c405cae9a09c01cdf7a796a369d1c624',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -75,15 +75,6 @@ private static $installed = array (
       array (
         0 => '*',
       ),
-    ),
-    'coreui/coreui' => 
-    array (
-      'pretty_version' => 'v3.2.0',
-      'version' => '3.2.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'b5aa85f1b09a28cdcbeded3da996699373424cc3',
     ),
     'creativeorange/gravatar' => 
     array (
@@ -557,7 +548,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '82e7898276ff1fec2a1682a38d1f27df8c915f02',
+      'reference' => '274e2eb3c405cae9a09c01cdf7a796a369d1c624',
     ),
     'laravel/tinker' => 
     array (

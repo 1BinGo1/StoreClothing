@@ -359,52 +359,6 @@
             "install-path": "./package-versions-deprecated"
         },
         {
-            "name": "coreui/coreui",
-            "version": "v3.2.0",
-            "version_normalized": "3.2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coreui/coreui.git",
-                "reference": "b5aa85f1b09a28cdcbeded3da996699373424cc3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coreui/coreui/zipball/b5aa85f1b09a28cdcbeded3da996699373424cc3",
-                "reference": "b5aa85f1b09a28cdcbeded3da996699373424cc3",
-                "shasum": ""
-            },
-            "time": "2020-05-20T12:47:25+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Open Source UI Kit built on top of Bootstrap 4.",
-            "homepage": "https://coreui.io/",
-            "keywords": [
-                "JS",
-                "css",
-                "framework",
-                "front-end",
-                "mobile-first",
-                "responsive",
-                "sass",
-                "web"
-            ],
-            "support": {
-                "issues": "https://github.com/coreui/coreui/issues",
-                "source": "https://github.com/coreui/coreui/tree/dev"
-            },
-            "funding": [
-                {
-                    "url": "https://coreui.io/",
-                    "type": "custom"
-                }
-            ],
-            "install-path": "../coreui/coreui"
-        },
-        {
             "name": "creativeorange/gravatar",
             "version": "v1.0.20",
             "version_normalized": "1.0.20.0",

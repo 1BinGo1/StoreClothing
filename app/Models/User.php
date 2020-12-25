@@ -9,8 +9,10 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory, Notifiable;
     protected $table = 'users';
+    protected $guarded = ['id'];
 
     /**
      * The attributes that are mass assignable.
