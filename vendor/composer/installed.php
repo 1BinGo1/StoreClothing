@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '514528a575d53b2c6df451084387ee68b6ce599a',
+    'reference' => '82e7898276ff1fec2a1682a38d1f27df8c915f02',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -19,6 +19,24 @@
       array (
       ),
       'reference' => '8d8f88b3b3830916be94292c1fbce84433efb1aa',
+    ),
+    'backpack/crud' => 
+    array (
+      'pretty_version' => '4.1.30',
+      'version' => '4.1.30.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '62856b1f01fc3e05c80140fc22f85ea2aac8368c',
+    ),
+    'backpack/generators' => 
+    array (
+      'pretty_version' => 'v3.1.4',
+      'version' => '3.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'de9f46aee1bfb963907d9c9fe7cd35d5472b3d2d',
     ),
     'brick/math' => 
     array (
@@ -44,6 +62,24 @@
       array (
         0 => '*',
       ),
+    ),
+    'coreui/coreui' => 
+    array (
+      'pretty_version' => 'v3.2.0',
+      'version' => '3.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b5aa85f1b09a28cdcbeded3da996699373424cc3',
+    ),
+    'creativeorange/gravatar' => 
+    array (
+      'pretty_version' => 'v1.0.20',
+      'version' => '1.0.20.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8c2c1a3a59fdf05f50c9d9413dd9d2d50835e017',
     ),
     'davedevelopment/hamcrest-php' => 
     array (
@@ -81,12 +117,12 @@
     ),
     'doctrine/dbal' => 
     array (
-      'pretty_version' => '3.0.0',
-      'version' => '3.0.0.0',
+      'pretty_version' => '2.12.1',
+      'version' => '2.12.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ee6d1260d5cc20ec506455a585945d7bdb98662c',
+      'reference' => 'adce7a954a1c2f14f85e94aed90c8489af204086',
     ),
     'doctrine/event-manager' => 
     array (
@@ -474,6 +510,15 @@
         0 => '*',
       ),
     ),
+    'laracasts/generators' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0b8b3d300cc948217f7547502b6de5db6fbafa70',
+    ),
     'laravel-lang/lang' => 
     array (
       'pretty_version' => '7.0.9',
@@ -499,7 +544,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '514528a575d53b2c6df451084387ee68b6ce599a',
+      'reference' => '82e7898276ff1fec2a1682a38d1f27df8c915f02',
     ),
     'laravel/tinker' => 
     array (
@@ -761,6 +806,15 @@
       array (
       ),
       'reference' => '8e16c225d57c3d6808014df6b1dd7598d0a5bbbe',
+    ),
+    'prologue/alerts' => 
+    array (
+      'pretty_version' => '0.4.8',
+      'version' => '0.4.8.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a6412e318c0171526bc8b25ef597f2cc61f5b800',
     ),
     'psr/container' => 
     array (
@@ -1322,6 +1376,15 @@
       array (
       ),
       'reference' => 'b43b05cf43c1b6d849478965062b6ef73e223bb5',
+    ),
+    'twig/twig' => 
+    array (
+      'pretty_version' => 'v2.14.1',
+      'version' => '2.14.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5eb9ac5dfdd20c3f59495c22841adc5da980d312',
     ),
     'vlucas/phpdotenv' => 
     array (
