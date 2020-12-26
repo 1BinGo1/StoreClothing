@@ -4,3 +4,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('section') }}'><i class='nav-icon la la-stream'></i> Sections</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('category') }}'><i class="nav-icon las la-puzzle-piece"></i> Categories</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('brand') }}'><i class="nav-icon las la-hat-wizard"></i> Brands</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('product') }}'><i class="nav-icon las la-archive"></i> Products</a></li>

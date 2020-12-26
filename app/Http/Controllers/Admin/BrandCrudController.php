@@ -37,8 +37,10 @@ class BrandCrudController extends CrudController
     {
         $this->crud->hasAccessOrFail('delete');
         $brand = Brand::query()->findOrFail($id);
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $brand->img)){
-            unlink($_SERVER['DOCUMENT_ROOT'] . $brand->img);
+        if ($brand->img != null){
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . $brand->img)){
+                unlink($_SERVER['DOCUMENT_ROOT'] . $brand->img);
+            }
         }
         return $this->crud->delete($id);
     }
@@ -61,6 +63,18 @@ class BrandCrudController extends CrudController
             'name' => 'img',
             'type' => 'image',
             'label' => 'Logotype',
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'created_at',
+            'type' => 'datetime',
+            'label' => 'Created',
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'updated_at',
+            'type' => 'datetime',
+            'label' => 'Updated',
         ]);
 
         /**

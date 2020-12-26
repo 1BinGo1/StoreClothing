@@ -26,18 +26,20 @@ class Brand extends Model
             $this->attributes[$attribute_name] = null;
         }
         if ($value != null){
-            if (!empty($this->attributes[$attribute_name])){
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . $this->{$attribute_name})){
-                    unlink($_SERVER['DOCUMENT_ROOT'] . $this->{$attribute_name});
+            if (mb_substr($value,0,4) != 'http'){
+                if (!empty($this->attributes[$attribute_name])){
+                    if (file_exists($_SERVER['DOCUMENT_ROOT'] . $this->{$attribute_name})){
+                        unlink($_SERVER['DOCUMENT_ROOT'] . $this->{$attribute_name});
+                    }
                 }
+                $code_image = mb_strstr($value, 'base64');
+                $code_image = mb_substr($code_image, 7);
+                $new_image = imagecreatefromstring(base64_decode($code_image));
+                $file_name = "/storage/brands/" . md5(time()) . ".png";
+                imagepng($new_image, $_SERVER['DOCUMENT_ROOT'] . $file_name);
+                imagedestroy($new_image);
+                $this->attributes[$attribute_name] = $file_name;
             }
-            $code_image = strstr($value, 'base64');
-            $code_image = substr($code_image, 7);
-            $new_image = imagecreatefromstring(base64_decode($code_image));
-            $file_name = "/storage/brands/" . md5(time()) . ".png";
-            imagepng($new_image, $_SERVER['DOCUMENT_ROOT'] . $file_name);
-            imagedestroy($new_image);
-            $this->attributes[$attribute_name] = $file_name;
         }
     }
 
