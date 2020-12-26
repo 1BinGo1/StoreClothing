@@ -53,6 +53,12 @@ class BrandCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         */
+
         $this->crud->addColumn([
             'name' => 'title',
             'type' => 'text',
@@ -77,11 +83,6 @@ class BrandCrudController extends CrudController
             'label' => 'Updated',
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
     /**
@@ -92,6 +93,12 @@ class BrandCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         */
+
         CRUD::setValidation(BrandRequest::class);
 
         $this->crud->addField([
@@ -104,15 +111,8 @@ class BrandCrudController extends CrudController
             'name' => 'img',
             'type' => 'image',
             'label' => 'Logotype',
-            /*'crop' => true,
-            'aspect_ratio' => 1,*/
         ]);
 
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
     }
 
     /**

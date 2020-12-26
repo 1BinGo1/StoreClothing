@@ -6,6 +6,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Section;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -55,6 +56,12 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         */
+
         $this->crud->addColumn([
             'name' => 'title',
             'type' => 'text',
@@ -125,11 +132,40 @@ class ProductCrudController extends CrudController
             'label' => 'Updated',
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        $this->crud->addFilter([
+            'name'  => 'category_id',
+            'type'  => 'select2_multiple',
+            'label' => 'Category'
+        ], function() {
+            $query = Category::all();
+            $categories = [];
+            $i = 1;
+            foreach ($query as $category){
+                $categories[$i++] = $category->title;
+            }
+            return $categories;
+        }, function($values) {
+            $this->crud->addClause('whereIn', 'category_id', json_decode($values));
+        });
+
+        $this->crud->addFilter([
+            'name'       => 'price',
+            'type'       => 'range',
+            'label'      => 'Price',
+            'label_from' => 'min value',
+            'label_to'   => 'max value'
+        ],
+            false,
+            function($value) { // if the filter is active
+                $range = json_decode($value);
+                if ($range->from) {
+                    $this->crud->addClause('where', 'price', '>=', (float) $range->from);
+                }
+                if ($range->to) {
+                    $this->crud->addClause('where', 'price', '<=', (float) $range->to);
+                }
+            });
+
     }
 
     /**
@@ -140,6 +176,12 @@ class ProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         */
+
         CRUD::setValidation(ProductRequest::class);
 
         $this->crud->addField([
@@ -196,11 +238,6 @@ class ProductCrudController extends CrudController
             'label' => 'Image',
         ]);
 
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\SectionRequest;
+use App\Models\Section;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -39,6 +40,11 @@ class SectionCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         */
 
         $this->crud->addColumn([
             'name' => 'name',
@@ -58,11 +64,6 @@ class SectionCrudController extends CrudController
             'label' => 'Updated',
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
     /**
@@ -73,6 +74,12 @@ class SectionCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         */
+
         CRUD::setValidation(SectionRequest::class);
 
         $this->crud->addField([
@@ -81,11 +88,6 @@ class SectionCrudController extends CrudController
             'label' => 'Name',
         ]);
 
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
     }
 
     /**

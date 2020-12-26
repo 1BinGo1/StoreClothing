@@ -40,6 +40,12 @@ class CategoryCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         */
+
         $this->crud->addColumn([
             'name' => 'title',
             'type' => 'text',
@@ -55,11 +61,34 @@ class CategoryCrudController extends CrudController
             'model' => Section::class,
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        $this->crud->addColumn([
+            'name' => 'created_at',
+            'type' => 'datetime',
+            'label' => 'Created',
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'updated_at',
+            'type' => 'datetime',
+            'label' => 'Updated',
+        ]);
+
+        $this->crud->addFilter([
+            'name'  => 'section_id',
+            'type'  => 'select2_multiple',
+            'label' => 'Section'
+        ], function() {
+            $query = Section::all();
+            $sections = [];
+            $i = 1;
+            foreach ($query as $section){
+                $sections[$i++] = $section->name;
+            }
+            return $sections;
+        }, function($values) {
+            $this->crud->addClause('whereIn', 'section_id', json_decode($values));
+        });
+
     }
 
     /**
@@ -70,6 +99,12 @@ class CategoryCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         */
+
         CRUD::setValidation(CategoryRequest::class);
 
         $this->crud->addField([
@@ -87,11 +122,6 @@ class CategoryCrudController extends CrudController
             'label' => 'Name',
         ]);
 
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
     }
 
     /**

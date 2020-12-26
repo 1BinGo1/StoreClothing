@@ -40,6 +40,12 @@ class UserCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         */
+
         $this->crud->addColumn([
             'name' => 'name',
             'type' => 'text',
@@ -65,33 +71,21 @@ class UserCrudController extends CrudController
         ]);
 
         $this->crud->addFilter([
-            'name'  => 'created_at',
-            'type'  => 'date_range',
-            'label' => 'Date'
-        ],
-            false,
-            function ($value) { // if the filter is active, apply these constraints
-                // $dates = json_decode($value);
-                // $this->crud->addClause('where', 'date', '>=', $dates->from);
-                // $this->crud->addClause('where', 'date', '<=', $dates->to . ' 23:59:59');
-            });
-
-        $this->crud->addFilter([
             'name'  => 'role_id',
             'type'  => 'select2_multiple',
-            'label' => 'Role',
-        ], [
-            1 => 'Admin',
-            2 => 'User',
-        ], function($value) { // if the filter is active
-            $this->crud->addClause('where', 'role_id', (int)$value);
+            'label' => 'Role'
+        ], function() {
+            $query = Role::all();
+            $roles = [];
+            $i = 1;
+            foreach ($query as $role){
+                $roles[$i++] = $role->name;
+            }
+            return $roles;
+        }, function($values) {
+            $this->crud->addClause('whereIn', 'role_id', json_decode($values));
         });
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
     /**
@@ -102,6 +96,12 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         */
+
         CRUD::setValidation(UserRequest::class);
 
         $this->crud->addField([
@@ -131,11 +131,6 @@ class UserCrudController extends CrudController
             'label' => 'Password',
         ]);
 
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
     }
 
     /**
