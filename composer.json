@@ -18,7 +18,8 @@
         "laravel-lang/lang": "~7.0",
         "laravel/framework": "^v8.12.0",
         "laravel/tinker": "^2.5",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "ext-gd": "*"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

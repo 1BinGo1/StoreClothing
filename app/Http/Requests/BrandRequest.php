@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class BrandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_id' => 'required',
-            'name' => 'bail|required|unique:users,name,' . $this->id . '|min:5|max:255',
-            'email' => 'bail|required|unique:users,email,' . $this->id . '|email',
-            'password' => 'bail|required|min:3|max:255'
+            'title' => 'bail|required|unique:brands,title,' . $this->id . '|min:3|max:255',
+            /*'img' => 'image'*/
         ];
     }
 
@@ -41,10 +39,8 @@ class UserRequest extends FormRequest
     public function attributes()
     {
         return [
-            'role_id' => 'Role',
-            'name' => 'Name',
-            'email' => 'Email',
-            'password' => 'Password'
+            'title' => 'Name',
+            'img' => 'Logotype'
         ];
     }
 
@@ -60,7 +56,7 @@ class UserRequest extends FormRequest
             'min' => 'Поле «:attribute» должно быть не меньше :min символов',
             'max' => 'Поле «:attribute» должно быть не больше :max символов',
             'unique' => 'Поле «:attribute» должно быть уникальным',
-            'email' => 'Поле «:attribute» типа email должно быть корректным'
+            'image' => 'Поле «:attribute» должно быть изображением',
         ];
     }
 }

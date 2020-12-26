@@ -26,7 +26,7 @@ class SectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|unique:sections,name|min:3|max:255',
+            'name' => 'bail|required|unique:sections,name,' . $this->id . '|min:3|max:255',
         ];
     }
 
