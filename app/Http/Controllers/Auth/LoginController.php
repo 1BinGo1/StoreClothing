@@ -42,10 +42,10 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user) {
         $route = 'user.index';
         $message = 'Вы успешно вошли в личный кабинет';
-        if ($user->role_id == 1) {
-            $route = 'admin.index';
+        /*if ($user->role_id == 1) {
+            $route = 'office.index';
             $message = 'Вы успешно вошли в панель управления';
-        }
+        }*/
         return redirect()->route($route)
             ->with('success', $message);
     }

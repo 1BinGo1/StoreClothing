@@ -1,1 +1,4 @@
-
+*.log
+clothing_store.sql
+storage
+*.txt

@@ -11,7 +11,7 @@
                 @auth
                     @if(auth()->user()->role_id == 1)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.index')}}"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="{{route('office.index')}}"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
                         </li>
                     @endif
                 @endauth

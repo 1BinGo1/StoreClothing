@@ -28,7 +28,7 @@ class AdminController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $sections = Section::all();
-        return view('admin.index', compact('users', 'products', 'categories', 'brands', 'sections'));
+        return view('office.index', compact('users', 'products', 'categories', 'brands', 'sections'));
     }
 
     public function create_user(Request $request){
@@ -191,7 +191,7 @@ class AdminController extends Controller
         }
         $item->delete();
         return redirect()
-            ->route('admin.index')
+            ->route('office.index')
             ->with('success', 'Запись была успешно удалена!');
     }
 

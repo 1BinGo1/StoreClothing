@@ -30,6 +30,7 @@ class CheckIfAdmin
     {
         // return ($user->is_admin == 1);
         return true;
+        //return ($user->role_id == 1);
     }
 
     /**
