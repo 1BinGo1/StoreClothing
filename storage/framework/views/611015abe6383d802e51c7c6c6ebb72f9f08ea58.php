@@ -1,0 +1,1 @@
+</<?php echo e($column['wrapper']['element'] ?? 'a'); ?>><?php /**PATH E:\Programs\OpenServer\OSPanel\domains\storeclothing\vendor\backpack\crud\src\resources\views\crud/columns/inc/wrapper_end.blade.php ENDPATH**/ ?>
